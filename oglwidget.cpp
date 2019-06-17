@@ -55,7 +55,7 @@ void OGLWidget::mousePressEvent(QMouseEvent *event)
 {
     if(event->buttons() == Qt::LeftButton)
     {
-        m_MousePosition = static_cast<QVector2D>(event->localPos());
+        m_MousePosition = QVector2D(event->localPos());
     }
 
     event->accept();
@@ -65,8 +65,8 @@ void OGLWidget::mouseMoveEvent(QMouseEvent *event)
 {
     if(event->buttons() == Qt::LeftButton)
     {
-        QVector2D diffpos = static_cast<QVector2D>(event->localPos()) - m_MousePosition;
-        m_MousePosition = static_cast<QVector2D>(event->localPos());
+        QVector2D diffpos = QVector2D(event->localPos()) - m_MousePosition;
+        m_MousePosition = QVector2D(event->localPos());
 
         float angle = diffpos.length() / 2.0f;
         QVector3D axis = QVector3D(diffpos.y(), diffpos.x(), 0.0f);
