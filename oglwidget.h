@@ -32,8 +32,7 @@ private:
     QOpenGLShaderProgram m_Program;
     QVector2D m_MousePosition;
     QQuaternion m_Rotation;
-
-    QVector<SimpleObject3D*> m_objects;
+    QVector<SimpleObject3D*> m_Objects;
 };
 
 #endif // OGLWIDGET_H

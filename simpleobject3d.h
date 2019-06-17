@@ -26,10 +26,12 @@ public:
     SimpleObject3D(const QVector<VertexData> &vert, const QVector<GLuint> &ind, const QImage &img);
     ~SimpleObject3D();
 
-    void free();
     void init(const QVector<VertexData> &vert, const QVector<GLuint> &ind, const QImage &img);
     void draw(QOpenGLShaderProgram* program, QOpenGLFunctions* functions);
     void translate(const QVector3D &trvector);
+
+protected:
+    void free();
 
 private:
     QOpenGLBuffer m_VertexBuffer;

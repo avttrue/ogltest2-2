@@ -6,12 +6,10 @@
 
 OGLWidget::OGLWidget(QWidget *parent)
     : QOpenGLWidget(parent)
-{
-}
+{}
 
 OGLWidget::~OGLWidget()
-{
-}
+{}
 
 void OGLWidget::initializeGL()
 {
@@ -20,11 +18,12 @@ void OGLWidget::initializeGL()
     glEnable(GL_CULL_FACE);
 
     initShaders();
+
     initCube(1.3f, QImage(":/cube3.png"));
-    m_objects.at(0)->translate(QVector3D(-0.7f, 0.0f, 0.0f));
+    m_Objects.at(0)->translate(QVector3D(-0.7f, 0.0f, 0.0f));
 
     initCube(1.0f, QImage(":/cube1.png"));
-    m_objects.at(1)->translate(QVector3D(0.7f, 0.0f, 0.0f));
+    m_Objects.at(1)->translate(QVector3D(0.7f, 0.0f, 0.0f));
 }
 
 void OGLWidget::resizeGL(int w, int h)
@@ -49,7 +48,7 @@ void OGLWidget::paintGL()
     m_Program.setUniformValue("u_lightPosition", QVector4D(0.0f, 0.0f, 0.0f, 1.0f));
     m_Program.setUniformValue("u_lightPower", 1.5f);
 
-    for(auto o: m_objects) o->draw(&m_Program, context()->functions());
+    for(auto o: m_Objects) o->draw(&m_Program, context()->functions());
 }
 
 void OGLWidget::mousePressEvent(QMouseEvent *event)
@@ -156,5 +155,5 @@ void OGLWidget::initCube(float width, const QImage &img)
         indexes.append(i + 2); indexes.append(i + 1); indexes.append(i + 3);
     }
 
-    m_objects.append(new SimpleObject3D(vertexes, indexes, img));
+    m_Objects.append(new SimpleObject3D(vertexes, indexes, img));
 }
